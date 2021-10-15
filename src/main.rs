@@ -214,13 +214,12 @@ fn main() {
         Ok(data) => {
             println!("All is OK, data built successfully");
 
-            /*
             for bam in &data {
                 efficiency2graph(out_dir.clone(), bam);
             }
 
             alphadiv2graph(out_dir.clone(), &data);
-             */
+            
             betadiv2graph(out_dir.clone(), &data);
         },
         Err(why) => {

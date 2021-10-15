@@ -1,0 +1,29 @@
+[package]
+name = "qsa"
+version = "0.1.0"
+authors =  ["Niccolò Guglietta niccolo.guglietta@protonmail.com"]
+edition = "2018"
+
+publish = false
+
+description = "A quasispecies analyzer built in Rust."
+# documentation = "https://docs.rs/qsa"
+readme = "README.md"
+# repository = ""
+
+license = "GPL-3.0"
+
+keywords = ["bioinformatics", "quasispecies", "viruses", "biology", "bam"]
+categories = ["command-line-utilities"]
+
+[profile.release]
+lto = true
+
+[workspace]
+# https://doc.rust-lang.org/cargo/reference/workspaces.html#the-workspace-section
+
+[dependencies]
+qsalib = { path = "qsalib" }
+structopt = "0.3.23"
+
+inline-python = "0.7.1"

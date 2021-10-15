@@ -1,0 +1,21 @@
+[package]
+name = "qsalib"
+version = "0.1.0"
+authors =  ["Niccolò Guglietta niccolo.guglietta@protonmail.com"]
+edition = "2018"
+
+publish = false
+
+description = "The library of the CLI utility qsa."
+# documentation = "https://docs.rs/qsalib"
+readme = "README.md"
+# repository = ""
+
+license = "MIT"
+
+keywords = ["bioinformatics", "quasispecies", "viruses", "biology", "bam"]
+categories = []
+
+[dependencies]
+bam = "0.1.4"
+ndarray = "0.15.3"

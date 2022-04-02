@@ -65,9 +65,12 @@ impl Matrices {
         for col in 0..pfm.ncols() {
             let nt = pfm.column(col).sum() as f64;
 
+            /*
             if nt == 0. {
                 return Err(QSAError::CoverageHole);
             }
+
+             */
 
             *coverage.get_mut(col).unwrap() = nt;
         }

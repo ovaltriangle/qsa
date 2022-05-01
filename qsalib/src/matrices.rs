@@ -1,7 +1,11 @@
 use std::fs::File;
+use std::path::Path;
 
 use ndarray::{Array, ArrayView, Ix1, Ix2, ShapeBuilder, s, Axis};
 use bam::{BamReader, Record, RecordReader};
+use csv::{Writer, WriterBuilder};
+
+use ndarray_csv::{Array2Reader, Array2Writer};
 
 use crate::error::{Result, QSAError};
 
@@ -149,5 +153,13 @@ impl Matrices {
 
     pub fn get_efficiency(&self) -> ArrayView<f64, Ix1> {
         self.efficiency.view()
+    }
+
+    pub fn pfm_to_csv<P>(&self, path: P, filename: &str)
+        where P: AsRef<Path>
+    {
+        let file = File::create(path.as_ref().join(Path::new(filename))).expect("could not open file");
+        let mut writer = WriterBuilder::new().has_headers(false).from_writer(file);
+        writer.serialize_array2(&self.pfm).unwrap();
     }
 }

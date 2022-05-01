@@ -216,6 +216,7 @@ fn main() {
 
             for bam in &data {
                 efficiency2graph(out_dir.clone(), bam);
+                bam.pfm_to_csv(out_dir.clone(), bam.name.as_str());
             }
 
             alphadiv2graph(out_dir.clone(), &data);

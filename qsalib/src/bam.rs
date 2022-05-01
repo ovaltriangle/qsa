@@ -305,4 +305,10 @@ impl Bam {
 
         self
     }
+
+    pub fn pfm_to_csv<P>(&self, path: P, filename: &str)
+        where P: AsRef<Path>
+    {
+        self.matrices.pfm_to_csv(path, filename);
+    }
 }

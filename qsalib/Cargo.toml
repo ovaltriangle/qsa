@@ -21,5 +21,3 @@ bam = "0.1.4"
 ndarray = "0.15.3"
 
 csv = "1.1.6"
-serde = "1.0.137"
-ndarray-csv = "0.5.1"

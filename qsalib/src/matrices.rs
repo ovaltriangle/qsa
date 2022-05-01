@@ -5,8 +5,6 @@ use ndarray::{Array, ArrayView, Ix1, Ix2, ShapeBuilder, s, Axis};
 use bam::{BamReader, Record, RecordReader};
 use csv::{Writer, WriterBuilder};
 
-use ndarray_csv::{Array2Reader, Array2Writer};
-
 use crate::error::{Result, QSAError};
 
 pub struct Matrices {
@@ -160,6 +158,11 @@ impl Matrices {
     {
         let file = File::create(path.as_ref().join(Path::new(filename))).expect("could not open file");
         let mut writer = WriterBuilder::new().has_headers(false).from_writer(file);
-        writer.serialize_array2(&self.pfm).unwrap();
+
+        writer.write_record(&["A", "C", "G", "T"]).unwrap();
+
+        for col in self.pfm.columns() {
+            writer.write_record(col.to_slice().unwrap().iter().map(|x| x.to_string()).collect::<Vec<_>>()).unwrap();
+        }
     }
 }

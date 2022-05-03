@@ -115,14 +115,18 @@ impl Matrices {
     pub(crate) fn new(bam: BamReader<File>, range: (i32, i32), threshold: f64) -> Result<Matrices> {
         let (pfm, coverage) = Matrices::pfm_coverage(bam, range)?;
 
+        /*
         let left_t = coverage.iter().position(|&x| x > threshold).unwrap();
         let right_t = coverage.len() - coverage.iter().rev().position(|&x| x > threshold).unwrap();
+
 
         let (pfm, coverage) =
             (
                 pfm.slice(s![.., left_t..=right_t]).to_owned(),
                 coverage.slice(s![left_t..=right_t]).to_owned(),
             );
+
+         */
 
         let ppm = Matrices::ppm(pfm.view());
         let efficiency = Matrices::efficiency(ppm.view());
